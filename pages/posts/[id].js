@@ -20,7 +20,7 @@ export default function Post({ postData }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-	console.log("====== getStaticProps ======")
+	console.log("====== getStaticProps, params ======")
 	console.log(params)
 	const postData = await getPostData(params.id)
 	console.log(`====== getPostData(${params.id}), postData ======`)
