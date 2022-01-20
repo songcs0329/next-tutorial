@@ -1,6 +1,7 @@
 import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
 import Date from "../components/date";
 import Layout, { siteTitle } from "../components/layout";
@@ -15,13 +16,27 @@ const fetcher = async (url) => {
 export default function Home({ allPostsData }) {
 	const { data } = useSWR("https://jsonplaceholder.typicode.com/todos/1", fetcher)
 	console.log("swr", data);
+	const [value, setValue] = useState("")
+	const handleValue = e => setValue(e.target.value)
+
+	useEffect(() => {
+		if(value) console.log(value)
+	}, [data && value])
 	
+	if(!data) return <div>loading....</div>
   return (
 		<Layout home>
 			<Head>
 				<title>{siteTitle}</title>
 			</Head>
 			<section className={utilStyles.headingMd}>
+				<input type="text" value={value} onChange={handleValue} />
+				<ul>
+					<li>{data.userId}</li>
+					<li>{data.id}</li>
+					<li>{data.title}</li>
+					<li>{data.completed.toString()}</li>
+				</ul>
 				<p>Hello World</p>
         <p>
           (This is a sample website - you’ll be building a site like this on{' '}
