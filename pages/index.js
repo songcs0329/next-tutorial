@@ -55,6 +55,8 @@ export default function Home({ allPostsData }) {
 
 export const getStaticProps = async () => {
 	const allPostsData = getSortedPostsData()
+	console.log("====== getSortedPostsData, allPostsData ======")
+	console.log(allPostsData)
 	return {
 		props: {
 			allPostsData
