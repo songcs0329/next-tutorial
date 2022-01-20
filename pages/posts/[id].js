@@ -20,6 +20,8 @@ export default function Post({ postData }) {
 }
 
 export const getStaticProps = async ({ params }) => {
+	console.log("====== getStaticProps ======")
+	console.log(params)
 	const postData = await getPostData(params.id)
 	console.log("====== postData ======")
 	console.log(postData)
@@ -31,7 +33,9 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
+	console.log("====== getStaticPaths ======")
 	const paths = getAllPostIds()
+	console.log(paths);
 	return {
 		paths,
 		fallback: false,
