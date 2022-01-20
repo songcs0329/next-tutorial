@@ -8,7 +8,7 @@ import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css"
 
 const fetcher = async (url) => {
-	const { data } = await axios(url)
+	const { data } = await axios.get(url)
   return data
 }
 
