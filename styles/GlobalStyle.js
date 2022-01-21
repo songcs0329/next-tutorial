@@ -18,6 +18,13 @@ const GlabalStyle = createGlobalStyle`
 			font-weight: bold;
 			color: #2244ee;
 		}
+		> button {
+			padding: 10px 16px;
+			font-size: 14px;
+			color: #fff;
+			background-color: #333;
+			cursor: pointer;
+		}
 	}
 `
 
