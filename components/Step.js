@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const StepStyle = styled.div`
 	display: inline-block;
-	margin: 16px;
+	margin-top: 32px;
 	padding: 16px;
 	border: 1px solid #2244ee;
 	> * {

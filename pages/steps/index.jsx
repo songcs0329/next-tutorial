@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { userInfoState } from "../../store";
 import Steps from "./Steps";
 
 const components = [
@@ -11,6 +13,8 @@ const components = [
 
 const Index = () => {
 	const router = useRouter()
+	const user = useRecoilValue(userInfoState)
+	console.log('inStep', user)
 	const [currentIndex, setCurrentIndex] = useState(0)
 
 	const pageIndex = useMemo(() => {
@@ -26,6 +30,15 @@ const Index = () => {
 
 	return (
 		<>
+			<div>
+				{
+					!user.isLogin &&
+						<ul>
+							<li>{user.name}</li>
+							<li>{user.email}</li>
+						</ul>
+				}
+			</div>
 			<Steps current={currentIndex} />
 		</>
 	)
