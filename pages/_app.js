@@ -1,8 +1,12 @@
 import "../styles/global.css"
+import GlabalStyle from "../styles/GlobalStyle"
 
 const App = ({ Component, pageProps }) => {
 	return (
-		<Component {...pageProps} />
+		<>
+			<GlabalStyle />
+			<Component {...pageProps} />
+		</>
 	)
 }
 

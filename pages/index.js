@@ -32,10 +32,10 @@ export default function Home({ allPostsData }) {
 			<section className={utilStyles.headingMd}>
 				<input type="text" value={value} onChange={handleValue} />
 				<ul>
-					<li>{data.userId}</li>
-					<li>{data.id}</li>
-					<li>{data.title}</li>
-					<li>{data.completed.toString()}</li>
+					<li>userId: <strong>{data.userId}</strong></li>
+					<li>id: <strong>{data.id}</strong></li>
+					<li>title: <strong>{data.title}</strong></li>
+					<li>completed: <strong>{data.completed.toString()}</strong></li>
 				</ul>
 				<p>Hello World</p>
         <p>
