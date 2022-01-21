@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { userInfoState } from "../../store";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { counterState, multipleCounterState, userInfoState } from "../../store";
 import Steps from "./Steps";
 
 const components = [
@@ -12,10 +12,15 @@ const components = [
 ];
 
 const Index = () => {
+	console.log('rendered Steps Index');
 	const router = useRouter()
 	const user = useRecoilValue(userInfoState)
 	console.log('inStep', user)
+	const [counter, setCounter] = useRecoilState(counterState)
+	const multiple = useRecoilValue(multipleCounterState)
 	const [currentIndex, setCurrentIndex] = useState(0)
+
+	const handleCounter = e => setCounter(e.target.value)
 
 	const pageIndex = useMemo(() => {
 		console.log(router.query)
@@ -31,12 +36,17 @@ const Index = () => {
 	return (
 		<>
 			<div>
+				<input type="number" value={counter} onChange={handleCounter} />
+				<ul>
+					<li>counter: <strong>{counter}</strong></li>
+					<li>multiple <strong>{multiple}</strong></li>
+				</ul>
 				{
 					!user.isLogin &&
-						<ul>
-							<li>{user.name}</li>
-							<li>{user.email}</li>
-						</ul>
+					<ul>
+						<li>{user.name}</li>
+						<li>{user.email}</li>
+					</ul>
 				}
 			</div>
 			<Steps current={currentIndex} />
