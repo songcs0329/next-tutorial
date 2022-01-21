@@ -7,11 +7,14 @@ const Steps = ({ current }) => {
 		<>
 			<h4>Steps</h4>
 			<p>{ current }</p>
-			<div>
-				<button onClick={() => goToRouter("One")}>StepOneComponent</button>
-				<button onClick={() => goToRouter("Two")}>StepTwoComponent</button>
-				<button onClick={() => goToRouter("Three")}>StepThreeComponent</button>
-			</div>
+			{
+				current === 0 &&
+				<div>
+					<button onClick={() => goToRouter("One")}>StepOneComponent</button>
+					<button onClick={() => goToRouter("Two")}>StepTwoComponent</button>
+					<button onClick={() => goToRouter("Three")}>StepThreeComponent</button>
+				</div>
+			}
 		</>
 	);
 };
